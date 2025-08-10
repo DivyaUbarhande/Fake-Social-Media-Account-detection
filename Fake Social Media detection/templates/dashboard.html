@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Fake Account Detection{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1 class="text-center mb-4">
+        <i class="fas fa-chart-bar text-primary me-3"></i>
+        Analytics Dashboard
+    </h1>
+
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    {% if stats %}
+    <!-- Statistics Cards -->
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ stats.total_accounts }}</div>
+                <div>Total Accounts</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ stats.fake_accounts }}</div>
+                <div>Fake Accounts</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ stats.real_accounts }}</div>
+                <div>Real Accounts</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ stats.fake_percentage }}%</div>
+                <div>Fake Percentage</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Average Metrics -->
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Avg Followers</h5>
+                    <p class="card-text fs-4">{{ stats.avg_followers }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Avg Following</h5>
+                    <p class="card-text fs-4">{{ stats.avg_following }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Avg Posts</h5>
+                    <p class="card-text fs-4">{{ stats.avg_posts }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Avg Engagement</h5>
+                    <p class="card-text fs-4">{{ stats.avg_engagement }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Account Distribution</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="accountChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Detection Performance</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="performanceChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Account Distribution Chart
+const accountCtx = document.getElementById('accountChart').getContext('2d');
+new Chart(accountCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Real Accounts', 'Fake Accounts'],
+        datasets: [{
+            data: [{{ stats.real_accounts if stats else 0 }}, {{ stats.fake_accounts if stats else 0 }}],
+            backgroundColor: ['#28a745', '#dc3545'],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// Performance Chart
+const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+new Chart(performanceCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Followers', 'Following', 'Posts', 'Engagement'],
+        datasets: [{
+            label: 'Average Metrics',
+            data: [{{ stats.avg_followers if stats else 0 }}, {{ stats.avg_following if stats else 0 }}, {{ stats.avg_posts if stats else 0 }}, {{ stats.avg_engagement * 1000 if stats else 0 }}],
+            backgroundColor: '#667eea',
+            borderColor: '#764ba2',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+{% endblock %} 

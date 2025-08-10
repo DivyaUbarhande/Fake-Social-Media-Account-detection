@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Fake Social Media Account Detection{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <!-- Hero Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">
+                <i class="fas fa-shield-alt text-primary me-3"></i>
+                Detect Fake Social Media Accounts
+            </h1>
+            <p class="lead mb-4">
+                <span class="badge bg-gradient text-white mb-2" style="background: linear-gradient(90deg, #667eea, #764ba2); font-size:1.1rem;">AI-Powered. Fast. Secure.</span><br>
+                Advanced machine learning system to identify and flag suspicious social media accounts. 
+                Protect your online community from bots, fake profiles, and malicious actors.
+            </p>
+            <div class="d-flex gap-3">
+                <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-search me-2"></i>Start Detection
+                </a>
+                <a href="{{ url_for('about') }}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-info-circle me-2"></i>Learn More
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="position-relative">
+                <div class="bg-primary bg-opacity-10 rounded-circle p-5 d-inline-block animate__animated animate__pulse animate__infinite">
+                    <i class="fas fa-robot text-primary" style="font-size: 8rem;"></i>
+                </div>
+                <div style="position:absolute;top:10%;left:60%;">
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f916.svg" alt="robot" width="60">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Trust Badges -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <span class="mx-2"><i class="fas fa-lock text-success"></i> Secure</span>
+            <span class="mx-2"><i class="fas fa-bolt text-warning"></i> Fast</span>
+            <span class="mx-2"><i class="fas fa-brain text-info"></i> AI-Driven</span>
+            <span class="mx-2"><i class="fas fa-users text-primary"></i> Community Trusted</span>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">
+                <i class="fas fa-star text-warning me-2"></i>
+                Key Features
+            </h2>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="card-body text-center p-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-brain text-primary" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h5 class="card-title">AI-Powered Detection</h5>
+                    <p class="card-text">
+                        Advanced machine learning algorithms analyze multiple account features 
+                        to identify patterns associated with fake accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="card-body text-center p-4">
+                    <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-tachometer-alt text-success" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h5 class="card-title">Real-time Analysis</h5>
+                    <p class="card-text">
+                        Instant detection results with confidence scores. 
+                        Get immediate feedback on account authenticity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="card-body text-center p-4">
+                    <div class="bg-info bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-chart-line text-info" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h5 class="card-title">Comprehensive Analytics</h5>
+                    <p class="card-text">
+                        Detailed insights and statistics about detection patterns, 
+                        helping you understand the threat landscape.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">
+                <i class="fas fa-cogs text-primary me-2"></i>
+                How It Works
+            </h2>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <span class="text-white fw-bold fs-4">1</span>
+                </div>
+                <h5>Input Account Data</h5>
+                <p class="text-muted">Enter account information like followers, posts, engagement metrics, and profile details.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <span class="text-white fw-bold fs-4">2</span>
+                </div>
+                <h5>AI Analysis</h5>
+                <p class="text-muted">Our machine learning model analyzes the data using multiple algorithms and feature engineering.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <span class="text-white fw-bold fs-4">3</span>
+                </div>
+                <h5>Pattern Detection</h5>
+                <p class="text-muted">The system identifies suspicious patterns and behaviors commonly associated with fake accounts.</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <span class="text-white fw-bold fs-4">4</span>
+                </div>
+                <h5>Get Results</h5>
+                <p class="text-muted">Receive a detailed report with confidence scores and explanations for the detection result.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4"><i class="fas fa-users text-primary me-2"></i>What Our Users Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p class="lead">"This tool helped us clean up our community and spot fake accounts instantly!"</p>
+                                <span class="fw-bold">- SocialNet Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p class="lead">"The dashboard analytics are beautiful and easy to understand. Highly recommended!"</p>
+                                <span class="fw-bold">- Community Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p class="lead">"Love the modern design and dark mode!"</p>
+                                <span class="fw-bold">- Tech Enthusiast</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-gradient text-white" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <div class="card-body text-center p-5">
+                    <h3 class="mb-3">
+                        <i class="fas fa-rocket me-2"></i>
+                        Ready to Start Detecting?
+                    </h3>
+                    <p class="lead mb-4">
+                        Join thousands of users who trust our system to protect their online communities.
+                    </p>
+                    <a href="{{ url_for('detect') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-play me-2"></i>Start Detection Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
